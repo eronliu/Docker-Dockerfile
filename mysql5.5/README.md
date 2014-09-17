@@ -1,21 +1,15 @@
-Docker memcached install
-========
-build
----------
-> docker build -t <username>/memcached .
-
-Run memcached
----------
-
-> docker run -d -p 11211:11211 <username>/memcached
-
-test memcached Connection
+Docker install and start test mysql5.5server
+============
+To myslq start hanging in data volumes：
 -------------
-* telnet localhost 11211
-* Trying 127.0.0.1...
-* Connected to localhost.
-* Escape character is '^]'.
-* stats
-* STAT pid 1
-* STAT uptime 165
-* ................
+> docker run --name=dbdata -v /var/lib/mysql centos true
+
+Start mysql open ports designated agents hanging in volume：
+---------
+> docker rum --volumes-from=dbdata --name=mysql5.5 -d -P username/mysql5.5
+
+Connect Test:
+-------
+> mysql -h x.x.x.x -uroot -pcomall2014
+
+========
